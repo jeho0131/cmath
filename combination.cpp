@@ -16,7 +16,21 @@ int findcom(int n, int r) {
 	}
 	
 	else {
-		return findcom(n-1, r-1) + findcom(n-1);
+		return findcom(n-1, r-1) + findcom(n-1, r);
+	}
+}
+
+int findp(int n, int r) {
+	if(r == 1) {
+		return n;
+	}
+	
+	else if(n == r) {
+		return P(n);
+	}
+	
+	else {
+		return (findp(n-1, r-1) * r) + findp(n-1, r);
 	}
 }
 
@@ -26,7 +40,7 @@ int main() {
 	
 	scanf("%d %d", &n, &r);
 	
-	printf("%d", findcom(n,r));
+	printf("%d", findp(n,r));
 	
 	return 0;
 }
